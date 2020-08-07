@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import PageHeader from '../../components/PageHeader';
 
 import styles from './styles';
 
 function Favorites(){
     return(
         <View style={styles.container}>
-            <Text style={styles.title}>Favorites Screen</Text>
+            <PageHeader title="Meus proffys favoritos" />
         </View>
     );
 }
