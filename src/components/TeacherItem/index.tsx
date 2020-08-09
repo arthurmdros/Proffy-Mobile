@@ -8,7 +8,21 @@ import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
 import whatsappIcon from '../../assets/images/icons/whatsapp.png';
 import { RectButton } from 'react-native-gesture-handler';
 
-function TeacherItem() {
+export interface Teacher {
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number;
+    name: string;
+    subject: string;
+    whatsapp: string;    
+}
+
+export interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     return (
         <View style={styles.container}>
             <View style={styles.profile}>
@@ -17,26 +31,23 @@ function TeacherItem() {
                     source={{ uri: 'https://github.com/arthurmdros.png' }}
                 />
                 <View style={styles.profileInfo}>
-                    <Text style={styles.name}>Arthur Medeiros</Text>
-                    <Text style={styles.subject}>Matemática</Text>
+                    <Text style={styles.name}>{teacher.name}</Text>
+                    <Text style={styles.subject}>{teacher.subject}</Text>
                 </View>
             </View>
 
-            <Text style={styles.bio}>
-                Ministrando aulas de matemática.
-                {'\n'}{'\n'}
-                Obtenha conteúdo destinado a concursos e vestibulares.
-            </Text>
+            <Text style={styles.bio}>{teacher.bio}</Text>
 
             <View style={styles.footer}>
                 <Text style={styles.price}>
                     Preço/hora {'   '}
-                    <Text style={styles.priceValue}>R$ 20,00</Text>
+                    <Text style={styles.priceValue}>R$ {teacher.cost}</Text>
                 </Text>
 
                 <View style={styles.buttonsContainer}>
-                    <RectButton style={styles.favoriteButton}>
-                        <Image source={heartOutlineIcon} />
+                    <RectButton style={[styles.favoriteButton, styles.favorite]}>
+                        {/*<Image source={heartOutlineIcon} />*/}
+                        <Image source={unfavoriteIcon} />
                     </RectButton>
 
                     <RectButton style={styles.contactButton}>
