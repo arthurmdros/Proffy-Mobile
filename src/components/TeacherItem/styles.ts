@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
     name: {
         fontFamily: 'Archivo_700Bold',
-        color: '#322264d',
+        color: '#32264d',
         fontSize: 20,        
     },
 
@@ -80,6 +80,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 8,
+    },
+
+    favorite: {
+        backgroundColor: '#e33d3d',
     },
 
     contactButton: {
