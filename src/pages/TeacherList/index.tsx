@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView, Text, TextInput } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
@@ -9,6 +9,7 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
 import styles from './styles';
 import api from '../../services/apip';
+import { useFocusEffect } from '@react-navigation/native';
 
 function TeacherList(){
     const [teachers, setTeachers] = useState([]);
@@ -32,6 +33,11 @@ function TeacherList(){
         });
     }
 
+    useFocusEffect(
+        React.useCallback(() => {
+          loadFavorites();
+        }, [])
+    );
 
     function handleToggleFiltersVisible() {
         setIsFiltersVisible(!isFiltersVisible);
